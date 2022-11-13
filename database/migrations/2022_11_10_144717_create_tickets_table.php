@@ -17,10 +17,11 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->string('ticket_number');
             $table->string('concert_name');
-            $table->date('date');
-            $table->time('ticket_time');
-            $table->string('artist_name');
-            $table->integer('price');
+            $table->date('concert_date');
+            $table->time('concert_time');
+            $table->string('name_of_artist');
+            $table->double('price');
+            $table->string('currency');
             $table->string('address');
             $table->string('stage');
             $table->enum('availability', ['available', 'not_available'])->default('available');
