@@ -38,6 +38,7 @@ class TicketsController extends Controller
             'name_of_artist' => $request->name_of_artist,
             'price' => $request->price,
             'currency' => $request->currency,
+            'seat_number' => $request->seat_number,
             'address' => $request->address,
             'stage' => $request->stage,
             'availability' => $request->availability
@@ -93,6 +94,7 @@ class TicketsController extends Controller
             $tickets->name_of_artist = $request->name_of_artist ? $request->name_of_artist : $tickets->name_of_artist;
             $tickets->price = $request->price ? $request->price : $tickets->price;
             $tickets->currency = $request->currency ? $request->currency : $tickets->currency;
+            $tickets->seat_number = $request->seat_number ? $request->seat_number : $tickets->seat_number;
             $tickets->address = $request->address ? $request->address : $tickets->address;
             $tickets->stage = $request->stage ? $request->stage : $tickets->stage;
             $tickets->availability = $request->availability ? $request->availability : $tickets->availability;
