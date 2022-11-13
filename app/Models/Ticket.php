@@ -14,7 +14,7 @@ class Ticket extends Model
         'concert_name',
         'concert_date',
         'concert_time', 
-        'artists_name', 
+        'name_of_artist', 
         'price', 
         'address', 
         'stage', 
