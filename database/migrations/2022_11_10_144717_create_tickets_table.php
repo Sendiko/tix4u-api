@@ -17,9 +17,9 @@ class CreateTicketsTable extends Migration
             $table->id();
             $table->string('ticket_number');
             $table->string('concert_name');
-            $table->date('date');
-            $table->time('ticket_time');
-            $table->string('artist_name');
+            $table->date('concert_date');
+            $table->time('concert_time');
+            $table->string('name_of_artist');
             $table->integer('price');
             $table->string('address');
             $table->string('stage');
