@@ -17,6 +17,7 @@ class Ticket extends Model
         'name_of_artist', 
         'price', 
         'currency',
+        'seat_number',
         'address', 
         'stage', 
         'availability'  

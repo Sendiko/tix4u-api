@@ -22,6 +22,7 @@ class CreateTicketsTable extends Migration
             $table->string('name_of_artist');
             $table->double('price');
             $table->string('currency');
+            $table->string('seat_number');
             $table->string('address');
             $table->string('stage');
             $table->enum('availability', ['available', 'not_available'])->default('available');
