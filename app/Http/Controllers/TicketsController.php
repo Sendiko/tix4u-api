@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class TicketsController extends Controller
 {
@@ -32,12 +31,13 @@ class TicketsController extends Controller
     public function store(Request $request)
     {
         $tickets = Ticket::create([
-            'ticket_number' => Str::random(32),
+            'ticket_number' => uniqid(),
             'concert_name' => $request->concert_name,
             'concert_date' => $request->concert_date,
             'concert_time' => $request->concert_time,
             'name_of_artist' => $request->name_of_artist,
             'price' => $request->price,
+            'currency' => $request->currency,
             'address' => $request->address,
             'stage' => $request->stage,
             'availability' => $request->availability
@@ -86,16 +86,17 @@ class TicketsController extends Controller
     {
         $tickets = Ticket::find($id);
         if($tickets){
-            $tickets->ticket_number = $tickets->ticket_number;
+            $tickets->ticket_number = uniqid();
             $tickets->concert_name = $request->concert_name ? $request->concert_name : $tickets->concert_name;
             $tickets->concert_date = $request->concert_date ? $request->concert_date : $tickets->concert_date;
             $tickets->concert_time = $request->concert_time ? $request->concert_time : $tickets->concert_time;
-            $tickets->concert_name = $request->concert_name ? $request->concert_name : $tickets->concert_name;
             $tickets->name_of_artist = $request->name_of_artist ? $request->name_of_artist : $tickets->name_of_artist;
             $tickets->price = $request->price ? $request->price : $tickets->price;
+            $tickets->currency = $request->currency ? $request->currency : $tickets->currency;
             $tickets->address = $request->address ? $request->address : $tickets->address;
             $tickets->stage = $request->stage ? $request->stage : $tickets->stage;
             $tickets->availability = $request->availability ? $request->availability : $tickets->availability;
+            $tickets->save();
             return response()->json([
                 'status' => 200,
                 'message' => 'data successfully updated',
