@@ -19,10 +19,9 @@ class CreateConcertsTable extends Migration
             $table->string('concert_name');
             $table->date('concert_date');
             $table->time('concert_time');
+            $table->string('name_of_artist');
             $table->string('stage');
             $table->integer('seat_capacity');
-            $table->string('seat_number');
-            $table->string('seat_level');
             $table->timestamps();
         });
     }
