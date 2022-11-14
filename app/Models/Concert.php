@@ -14,10 +14,9 @@ class Concert extends Model
         'concert_name',
         'concert_date',
         'concert_time',
+        'name_of_artist',
         'stage',
         'seat_capacity',
-        'seat_number',
-        'seat_level'
     ];
 
 }
