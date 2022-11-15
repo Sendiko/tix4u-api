@@ -70,7 +70,7 @@ class TicketsController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => `$id not found`,
+                'message' => "ticket id $id  not found",
                 'data' => 'null'
             ], 404);
         };
@@ -107,7 +107,7 @@ class TicketsController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => `$id not found`, 
+                'message' => "ticket id $id  not found", 
                 'data' => 'null'
             ]);
         };
@@ -132,7 +132,7 @@ class TicketsController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => "$id not found",
+                'message' => "ticket id $id not found",
                 'data' => 'null'
             ], 404);
         }
