@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('artist/login', [ArtistController::class, 'login']);
 Route::post('artist/register', [ArtistController::class, 'register']);
 
+Route::post('user/login', [UserController::class, 'login']);
+Route::post('user/register', [UserController::class, 'register']);
+
 Route::get('tickets', [TicketsController::class, 'index']);
 Route::get('tickets/{id}', [TicketsController::class, 'show']);
 
@@ -36,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function(){
         'index', 'show'
     ]);
     Route::post('artist/logout', [ArtistController::class, 'logout']);
+    Route::post('user/logout', [UserController::class, 'logout']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
