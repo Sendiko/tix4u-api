@@ -18,10 +18,11 @@ class CreateArtistsTable extends Migration
             $table->string('artist_fullname');
             $table->string('artist_stagename');
             $table->integer('age');
-            $table->enum('gender', ['male', 'female'])->default('male');
+            $table->enum('gender', ['MALE', 'FEMALE'])->default('MALE');
             $table->string('music_genre');
             $table->string('username');
             $table->string('email');
+            $table->string('password');
             $table->timestamps();
         });
     }
