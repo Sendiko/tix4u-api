@@ -13,12 +13,13 @@ class Artist extends Model
 
     protected $fillable = [
         "artist_fullname",
-        "artis_stagename",
+        "artist_stagename",
         "age",
         "gender",
         "music_genre",
         "username",
-        "email"
+        "email",
+        "password"
     ];
 
     protected $hidden = [
