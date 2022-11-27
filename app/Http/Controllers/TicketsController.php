@@ -109,7 +109,7 @@ class TicketsController extends Controller
                 'status' => 404,
                 'message' => "ticket id $id  not found", 
                 'data' => 'null'
-            ]);
+            ], 404);
         };
     }
 

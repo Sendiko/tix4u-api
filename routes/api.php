@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::resource('concerts', ConcertController::class)->except([
         'index', 'show'
     ]);
+    Route::resource('transactions', TransactionController::class);
     Route::post('artist/logout', [ArtistController::class, 'logout']);
     Route::post('user/logout', [UserController::class, 'logout']);
 });

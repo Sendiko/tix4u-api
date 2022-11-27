@@ -15,6 +15,15 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('transaction_id');
+            $table->integer('amount_of_ticket');
+            $table->integer('ticket_price');
+            $table->integer('total_price');
+            $table->string('concert_name');
+            $table->string('concert_address');
+            $table->date('concert_date');
+            $table->integer('tax');
+            $table->string('currency');
             $table->timestamps();
         });
     }
