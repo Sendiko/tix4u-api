@@ -26,6 +26,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 200,
             'message' => "$user->name berhasil register",
+            'data' => $user,
             'token' => $token,
             'token_type' => 'Bearer'
         ]);
@@ -52,6 +53,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => "$user->username berhasil login",
+                'data' => $user,
                 'token' => $token,
                 'token_type' => 'Bearer'
             ], 200);

@@ -36,6 +36,7 @@ class ArtistController extends Controller
         return response()->json([
             'status' => 200,
             'message' => "$artist->name berhasil register",
+            'data' => $artist,
             'token' => $token,
             'token_type' => 'Bearer'
         ], 200);
@@ -62,6 +63,7 @@ class ArtistController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => "$artist->username berhasil login",
+                'data' => $artist,
                 'token' => $token,
                 'token_type' => 'Bearer'
             ], 200);
