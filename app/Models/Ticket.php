@@ -20,7 +20,6 @@ class Ticket extends Model
         'currency',
         'seat_number',
         'stage', 
-        'availability'  
     ];
 
 }

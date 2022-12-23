@@ -25,7 +25,6 @@ class CreateTicketsTable extends Migration
             $table->string('currency');
             $table->string('seat_number');
             $table->string('stage');
-            $table->enum('availability', ['available', 'not_available'])->default('available');
             $table->timestamps();
         });
     }
