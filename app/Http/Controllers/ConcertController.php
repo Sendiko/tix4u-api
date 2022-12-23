@@ -125,7 +125,7 @@ class ConcertController extends Controller
                     $concert->concert_date = $request->concert_date ? $request->concert_date : $concert->concert_date;
                     $concert->concert_time = $request->concert_time ? $request->concert_time : $concert->concert_time;
                     $concert->concert_address = $request->concert_address ? $request->concert_address : $concert->concert_address;
-                    $concert->name_of_artist = $request->name_of_artist ? $request->name_of_artist : $concert->name_of_artist;
+                    $concert->name_of_artist = $artist->artist_fullname;
                     $concert->stage = $request->stage ? $request->stage : $concert->stage;
                     $concert->seat_capacity = $request->seat_capacity ? $request->seat_capacity : $concert->seat_capacity;
                     $concert->save();
