@@ -110,13 +110,14 @@ class ConcertController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $artist = Artist::find($request->artist_id);
         $concert = Concert::find($id);
-        $role = $request->validate([
-            'role' => 'required|in:ARTISTS,DEVS,USERS'
+        $data = $request->validate([
+            'role' => 'required|in:ARTISTS,DEVS,USERS',
+            'artist_id' => 'required|integer'
         ]);
+        $artist = Artist::find($data['artist_id']);
 
-        if($role['role'] === "ARTISTS" || $role['role'] === "DEVS"){
+        if($data['role'] === "ARTISTS" || $data['role'] === "DEVS"){
             if($concert){
                 if($artist){
                     $concert->concert_id = $concert->concert_id;
