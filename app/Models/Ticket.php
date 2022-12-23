@@ -14,13 +14,12 @@ class Ticket extends Model
         'concert_name',
         'concert_date',
         'concert_time', 
+        'concert_address', 
         'name_of_artist', 
         'price', 
         'currency',
         'seat_number',
-        'address', 
         'stage', 
-        'availability'  
     ];
 
 }

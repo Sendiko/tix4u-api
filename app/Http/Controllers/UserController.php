@@ -12,8 +12,9 @@ class UserController extends Controller
     {
         $validator = $request->validate([
             'username' => 'required|string|max:255',
+            'role' => 'in:USERS',
             'email' => 'required|email|max:255|string',
-            'password' =>'required|string|min:8'
+            'password' =>'required|string|min:8|confirmed'
         ]);
 
         $user = User::create([
@@ -26,6 +27,7 @@ class UserController extends Controller
         return response()->json([
             'status' => 200,
             'message' => "$user->name berhasil register",
+            'data' => $user,
             'token' => $token,
             'token_type' => 'Bearer'
         ]);
@@ -52,6 +54,7 @@ class UserController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => "$user->username berhasil login",
+                'data' => $user,
                 'token' => $token,
                 'token_type' => 'Bearer'
             ], 200);

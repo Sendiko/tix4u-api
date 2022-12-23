@@ -23,6 +23,7 @@ class CreateArtistsTable extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('password');
+            $table->enum('role', ['DEVS', 'ARTISTS', 'USERS'])->default('USERS');
             $table->timestamps();
         });
     }
