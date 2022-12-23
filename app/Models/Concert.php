@@ -14,6 +14,7 @@ class Concert extends Model
         'concert_name',
         'concert_date',
         'concert_time',
+        'concert_address',
         'name_of_artist',
         'stage',
         'seat_capacity',

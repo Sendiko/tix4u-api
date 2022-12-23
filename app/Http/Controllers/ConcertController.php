@@ -35,6 +35,7 @@ class ConcertController extends Controller
             'concert_name' => 'required|string|max:255',
             'concert_date' => 'required|date',
             'concert_time' =>  'required|string',
+            'concert_address' =>  'required|string|max:255',
             'artist_id' => 'required|integer',
             'stage' => 'required|string',
             'seat_capacity' => 'required|integer',
@@ -50,6 +51,7 @@ class ConcertController extends Controller
                     'concert_name' => $data['concert_name'],
                     'concert_date' => $data['concert_date'],
                     'concert_time' => $data['concert_time'],
+                    'concert_address' => $data['concert_address'],
                     'name_of_artist' => $artist->artist_stagename,
                     'stage' => $data['stage'],
                     'seat_capacity' => $data['seat_capacity'],
@@ -121,6 +123,7 @@ class ConcertController extends Controller
                     $concert->concert_name = $request->concert_name ? $request->concert_name : $concert->concert_name;
                     $concert->concert_date = $request->concert_date ? $request->concert_date : $concert->concert_date;
                     $concert->concert_time = $request->concert_time ? $request->concert_time : $concert->concert_time;
+                    $concert->concert_address = $request->concert_address ? $request->concert_address : $concert->concert_address;
                     $concert->name_of_artist = $request->name_of_artist ? $request->name_of_artist : $concert->name_of_artist;
                     $concert->stage = $request->stage ? $request->stage : $concert->stage;
                     $concert->seat_capacity = $request->seat_capacity ? $request->seat_capacity : $concert->seat_capacity;
