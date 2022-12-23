@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Concert;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -30,25 +31,39 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        $tickets = Ticket::create([
-            'ticket_number' => uniqid(),
-            'concert_name' => $request->concert_name,
-            'concert_date' => $request->concert_date,
-            'concert_time' => $request->concert_time,
-            'name_of_artist' => $request->name_of_artist,
-            'price' => $request->price,
-            'currency' => $request->currency,
-            'seat_number' => $request->seat_number,
-            'address' => $request->address,
-            'stage' => $request->stage,
-            'availability' => $request->availability
+        $data = $request->validate([
+            'concert_id' => 'required|integer',
+            'price' => 'required|integer',
+            'currency' => 'required|string',
+            'seat_number' => 'required|string',
         ]);
 
-        return response()->json([
-            'status' => 201,
-            'message' => 'data successfully created',
-            'data' => $tickets
-        ], 201);
+        $concert = Concert::find($data['concert_id']);
+        if($concert){
+            $tickets = Ticket::create([
+                'ticket_number' => uniqid(),
+                'concert_name' => $concert->concert_name,
+                'concert_date' => $concert->concert_date,
+                'concert_time' => $concert->concert_time,
+                'concert_address' => $concert->concert_address,
+                'name_of_artist' => $concert->name_of_artist,
+                'stage' => $concert->stage,
+                'price' => $request->price,
+                'currency' => $request->currency,
+                'seat_number' => $request->seat_number,
+            ]);
+            return response()->json([
+                'status' => 201,
+                'message' => 'data successfully created',
+                'data' => $tickets
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'concert not found',
+                'data' => "concert with $request->concert_id not found"
+            ], 404);
+        }
 
     }
 
@@ -70,8 +85,8 @@ class TicketsController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => "ticket id $id  not found",
-                'data' => 'null'
+                'message' => "ticket not found",
+                'data' => "ticket with id $id not found"
             ], 404);
         };
     }
@@ -85,19 +100,26 @@ class TicketsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->validate([
+            'concert_id' => 'required|integer',
+            'price' => 'integer',
+            'currency' => 'string',
+            'seat_number' => 'string',
+        ]);
+
+        $concert = Concert::find($data['concert_id']);
         $tickets = Ticket::find($id);
         if($tickets){
             $tickets->ticket_number = uniqid();
-            $tickets->concert_name = $request->concert_name ? $request->concert_name : $tickets->concert_name;
-            $tickets->concert_date = $request->concert_date ? $request->concert_date : $tickets->concert_date;
-            $tickets->concert_time = $request->concert_time ? $request->concert_time : $tickets->concert_time;
-            $tickets->name_of_artist = $request->name_of_artist ? $request->name_of_artist : $tickets->name_of_artist;
+            $tickets->concert_name = $concert->concert_name;
+            $tickets->concert_date = $concert->concert_date;
+            $tickets->concert_time = $concert->concert_time;
+            $tickets->concert_address = $concert->concert_address;
+            $tickets->name_of_artist = $concert->name_of_artist;
+            $tickets->stage = $concert->stage;
             $tickets->price = $request->price ? $request->price : $tickets->price;
             $tickets->currency = $request->currency ? $request->currency : $tickets->currency;
             $tickets->seat_number = $request->seat_number ? $request->seat_number : $tickets->seat_number;
-            $tickets->address = $request->address ? $request->address : $tickets->address;
-            $tickets->stage = $request->stage ? $request->stage : $tickets->stage;
-            $tickets->availability = $request->availability ? $request->availability : $tickets->availability;
             $tickets->save();
             return response()->json([
                 'status' => 200,
@@ -107,8 +129,8 @@ class TicketsController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => "ticket id $id  not found", 
-                'data' => 'null'
+                'message' => "ticket id not found", 
+                'data' => "ticket with id $id not found"
             ], 404);
         };
     }
