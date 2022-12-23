@@ -17,7 +17,6 @@ class Transaction extends Model
         'concert_name',
         'concert_address',
         'concert_date',
-        'tax',
         'currency',
     ];
 

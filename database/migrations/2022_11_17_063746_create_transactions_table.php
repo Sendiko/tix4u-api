@@ -22,7 +22,6 @@ class CreateTransactionsTable extends Migration
             $table->string('concert_name');
             $table->string('concert_address');
             $table->date('concert_date');
-            $table->integer('tax');
             $table->string('currency');
             $table->timestamps();
         });
