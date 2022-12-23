@@ -16,9 +16,10 @@ class ArtistController extends Controller
             'age' => 'required|integer|max:100',
             'gender' => 'in:MALE,FEMALE',
             'music_genre' => 'required|string|max:255',
+            'role' => 'in:ARTISTS',
             'username' => 'required|string|unique:artists',
             'email' => 'required|string|email|max:255|unique:artists',
-            'password' => 'required|string|min:8'
+            'password' => 'required|string|min:8|confirmed'
         ]);
 
         $artist = Artist::create([
