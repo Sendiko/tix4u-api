@@ -50,9 +50,9 @@ class TicketsController extends Controller
                     'concert_address' => $concert->concert_address,
                     'name_of_artist' => $concert->name_of_artist,
                     'stage' => $concert->stage,
-                    'price' => $request->price,
-                    'currency' => $request->currency,
-                    'seat_number' => $request->seat_number,
+                    'price' => $data['price'],
+                    'currency' => $data['currency'],
+                    'seat_number' => $data['seat_number'],
                 ]);
                 return response()->json([
                     'status' => 201,
@@ -63,7 +63,7 @@ class TicketsController extends Controller
                 return response()->json([
                     'status' => 404,
                     'message' => 'concert not found',
-                    'data' => "concert with $request->concert_id not found"
+                    'data' => "concert with id $request->concert_id not found"
                 ], 404);
             }    
         } else {
