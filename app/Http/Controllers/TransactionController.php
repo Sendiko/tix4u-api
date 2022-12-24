@@ -44,7 +44,7 @@ class TransactionController extends Controller
             $total_price = $ticket_price + $tax;
             $transactions = Transaction::create([
                 'transaction_id' => uniqid(),
-                'amount_of_ticket' => $request->amount_of_ticket,
+                'amount_of_ticket' => $data['amount_of_ticket'],
                 'ticket_price' => $ticket_price,
                 'total_price' => $total_price,
                 'concert_name' => $ticket->concert_name,
