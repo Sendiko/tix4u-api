@@ -14,7 +14,7 @@ class ArtistController extends Controller
             'artist_fullname' => 'required|string|max:255',
             'artist_stagename' => 'required|string|max:255',
             'age' => 'required|integer|max:100',
-            'gender' => 'in:MALE,FEMALE',
+            'gender' => 'required|in:MALE,FEMALE',
             'music_genre' => 'required|string|max:255',
             'role' => 'in:ARTISTS',
             'username' => 'required|string|unique:artists',
